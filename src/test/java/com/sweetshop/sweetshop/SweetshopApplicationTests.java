@@ -1,4 +1,3 @@
-// src/test/java/com/sweetshop/manager/SweetShopManagerTest.java
 package com.sweetshop.sweetshop;
 
 import com.sweetshop.sweetshop.manager.SweetShopManager;
@@ -37,7 +36,7 @@ class SweetShopManagerTest {
 
 		manager.addSweet(kajuKatli1);
 		assertThrows(IllegalArgumentException.class, () -> manager.addSweet(kajuKatli2));
-		assertEquals(1, manager.getAllSweets().size()); // Ensure no duplicate was added
+		assertEquals(1, manager.getAllSweets().size()); 
 	}
 
 	@Test
@@ -54,7 +53,6 @@ class SweetShopManagerTest {
 		assertEquals(2, manager.getAllSweets().size());
 	}
 
-	// ... inside SweetShopManagerTest class ...
 
 	@Test
 	@DisplayName("Should delete an existing sweet from the shop")
@@ -75,8 +73,8 @@ class SweetShopManagerTest {
 		manager.addSweet(kajuKatli);
 		assertEquals(1, manager.getAllSweets().size());
 
-		manager.deleteSweet("9999"); // Non-existent ID
-		assertEquals(1, manager.getAllSweets().size()); // Size should remain unchanged
+		manager.deleteSweet("9999"); 
+		assertEquals(1, manager.getAllSweets().size()); 
 	}
 
 	@Test
@@ -86,10 +84,9 @@ class SweetShopManagerTest {
 		assertThrows(IllegalArgumentException.class, () -> manager.deleteSweet(null));
 		assertThrows(IllegalArgumentException.class, () -> manager.deleteSweet(""));
 		assertThrows(IllegalArgumentException.class, () -> manager.deleteSweet("   "));
-		assertEquals(1, manager.getAllSweets().size()); // Ensure sweet is still there
+		assertEquals(1, manager.getAllSweets().size()); 
 	}
 
-	// ... inside SweetShopManagerTest class ...
 
 	@Test
 	@DisplayName("Should update an existing sweet's details")
@@ -152,8 +149,7 @@ class SweetShopManagerTest {
 		manager.addSweet(new Sweet("1002", "Gulab Jamun", "Milk-Based", 10.0, 50));
 		manager.addSweet(new Sweet("1003", "Rasgulla", "Milk-Based", 12.0, 30));
 
-		List<Sweet> results = manager.searchSweets("katli", "name", 0, 0); // Price range 0,0 means not searching by
-																			// price
+		List<Sweet> results = manager.searchSweets("katli", "name", 0, 0); 
 		assertEquals(1, results.size());
 		assertEquals("Kaju Katli", results.get(0).getName());
 
@@ -187,7 +183,7 @@ class SweetShopManagerTest {
 		manager.addSweet(new Sweet("1003", "Rasgulla", "Milk-Based", 12.0, 30));
 		manager.addSweet(new Sweet("1004", "Mysore Pak", "Ghee-Based", 80.0, 10));
 
-		List<Sweet> results = manager.searchSweets("", "", 10.0, 30.0); // Search by price only
+		List<Sweet> results = manager.searchSweets("", "", 10.0, 30.0); 
 		assertEquals(2, results.size());
 		assertTrue(results.stream().anyMatch(s -> s.getName().equals("Gulab Jamun")));
 		assertTrue(results.stream().anyMatch(s -> s.getName().equals("Rasgulla")));
@@ -238,7 +234,6 @@ class SweetShopManagerTest {
 		assertEquals(1, results.size());
 	}
 
-	// ... inside SweetShopManagerTest class ...
 
 	@Test
 	@DisplayName("Should sort sweets by name ascending")
@@ -326,7 +321,7 @@ class SweetShopManagerTest {
 		manager.addSweet(kajuKatli);
 
 		assertThrows(IllegalArgumentException.class, () -> manager.purchaseSweet("1001", 25));
-		assertEquals(20, manager.getSweetById("1001").getQuantity()); // Quantity should remain unchanged
+		assertEquals(20, manager.getSweetById("1001").getQuantity()); 
 	}
 
 	@Test
@@ -343,7 +338,7 @@ class SweetShopManagerTest {
 
 		assertThrows(IllegalArgumentException.class, () -> manager.purchaseSweet("1001", 0));
 		assertThrows(IllegalArgumentException.class, () -> manager.purchaseSweet("1001", -5));
-		assertEquals(20, manager.getSweetById("1001").getQuantity()); // Quantity should remain unchanged
+		assertEquals(20, manager.getSweetById("1001").getQuantity()); 
 	}
 
 	@Test

@@ -89,7 +89,7 @@ public class SweetShopManager {
                 comparator = Comparator.comparingInt(Sweet::getQuantity);
                 break;
             default:
-                return getAllSweets(); // Invalid sort, return unsorted
+                return getAllSweets(); 
         }
 
         if ("desc".equalsIgnoreCase(direction)) {
