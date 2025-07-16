@@ -145,8 +145,6 @@ class SweetShopManagerTest {
 		assertThrows(IllegalArgumentException.class, () -> manager.updateSweet("1001", updatedSweetWithDiffId));
 	}
 
-	// ... inside SweetShopManagerTest class ...
-
 	@Test
 	@DisplayName("Should search sweets by name (case-insensitive, partial match)")
 	void shouldSearchSweetsByName() {
@@ -303,18 +301,13 @@ class SweetShopManagerTest {
 		manager.addSweet(s2);
 
 		List<Sweet> results = manager.sortSweets("invalid", "asc");
-		// Check that it's just the order they were added (or HashMap's arbitrary order)
-		// This test is weaker. A better way is to ensure it matches the unsorted list.
-		List<Sweet> expectedUnsorted = List.of(s1, s2); // Or whatever order map gives
-		// For robust test, copy and assert same elements, but exact order is hard for
-		// default map.
-		// Best to ensure it returns *all* elements, and not throw an error.
+	
+		List<Sweet> expectedUnsorted = List.of(s1, s2); 
+		
 		assertEquals(2, results.size());
 		assertTrue(results.contains(s1));
 		assertTrue(results.contains(s2));
 	}
-
-	// ... inside SweetShopManagerTest class ...
 
 	@Test
 	@DisplayName("Should decrease sweet quantity upon purchase")
@@ -353,8 +346,6 @@ class SweetShopManagerTest {
 		assertEquals(20, manager.getSweetById("1001").getQuantity()); // Quantity should remain unchanged
 	}
 
-	// ... inside SweetShopManagerTest class ...
-
 	@Test
 	@DisplayName("Should increase sweet quantity upon restock")
 	void shouldIncreaseQuantityOnRestock() {
@@ -379,6 +370,6 @@ class SweetShopManagerTest {
 
 		assertThrows(IllegalArgumentException.class, () -> manager.restockSweet("1001", 0));
 		assertThrows(IllegalArgumentException.class, () -> manager.restockSweet("1001", -5));
-		assertEquals(20, manager.getSweetById("1001").getQuantity()); // Quantity should remain unchanged
+		assertEquals(20, manager.getSweetById("1001").getQuantity()); 
 	}
 }
